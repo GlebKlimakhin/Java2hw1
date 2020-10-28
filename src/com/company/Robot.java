@@ -1,28 +1,23 @@
 package com.company;
 
-public class Robot implements Runable, Jumpable{
-    String name;
-    int jumpHeight;
-    int runDistance;
-    public Robot(String name, int jumpHeight, int runDistance) {
+public class Robot implements Runable{
+    protected String name;
+    protected int runDistance;
+    protected Robot(String name, int runDistance) {
     this.name = name;
-    this.jumpHeight = jumpHeight;
     this.runDistance = runDistance;
     }
 
     @Override
-    public void run(Treadmill treadmill) {
-        if(runDistance>=treadmill.runDistance)
-            System.out.println("Робот " + name + " пробежал дистанцию!");
+    public boolean run(Treadmill treadmill) {
+        if(runDistance>=treadmill.getRunDistance())
+        {
+            System.out.println("Робот " + name + " пробежал дистанцию " + runDistance + " !");
+            return true;}
         else
-            System.out.println("Робот " + name + " не справился!");
+        {
+            System.out.println("Робот " + name + " не справился с дистанцией " + treadmill.getRunDistance() +  " и выбыл!");
+            return false;}
     }
 
-    @Override
-    public void jump(Wall wall) {
-        if(jumpHeight>=wall.height)
-            System.out.println("Робот " + name + " перепрыгнул стену!");
-        else
-            System.out.println("Робот " + name + " не справился!");
-    }
 }
