@@ -50,7 +50,7 @@ protected static void task3()
 
 			System.out.println();
 		}
-	}
-}
+	  }
+   }
 }
 
